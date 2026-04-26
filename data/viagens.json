@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Aparecida do Norte - A Grande Celebração",
+    "dateInfo": "DIA 12 DE OUTUBRO!",
+    "payment": "Facilitamos no PIX e no Cartão",
+    "included": "Ônibus Semi Leito premium.\nHospedagem no maravilhoso Hotel Imperador.\nPensão Completa (Café, Almoço e Jantar).",
+    "imageUrl": "/viagens/NOVA IMAGEM APARECIDA DO NORTE.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Ação Rosário da Vitória",
+    "dateInfo": "Bate e Volta",
+    "payment": "Facilitamos no PIX e no Cartão",
+    "included": "Transporte executivo em Ônibus Semi Leito.\nLanche especial fornecido na ida.\nExperiência de oração intensa e segura.",
+    "imageUrl": "/viagens/ROSARIO DA VITORIA.jpg"
+  },
+  {
+    "id": 3,
+    "title": "1º Retiro de Cura e Libertação",
+    "dateInfo": "Dias 14 a 16 de Agosto",
+    "payment": "Facilitamos no PIX e no Cartão",
+    "included": "Hospedagem no Hotel da Rainha (café da manhã incluso).\nLanche especial servido na ida.\nViagem tranquila em Ônibus Semi Leito.",
+    "imageUrl": "/viagens/NOVA IMAGEM 1 RETIRO DE CURA E LIBERTAÇÃO.png"
+  }
+]

@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Outfit:wght@200;400;700&family=Great+Vibes&display=swap');
+
+:root {
+  --primary-navy: #0B192C; /* Azul marinho extremamente elegante e premium */
+  --secondary-navy: #1A365D;
+  /* Cores de Joalheria Russa Imperial / Fabergé */
+  --gold-premium: #C5A059; 
+  --gold-glow: rgba(197, 160, 89, 0.4);
+  --gold-imperial-shadow: rgba(138, 3, 3, 0.4);
+  --bg-light: #FAFAFA;
+  --bg-dark: #121212;
+  --text-dark: #222222;
+  --text-gray: #666666;
+  --text-light: #F7F7F7;
+  --glass-bg: rgba(11, 25, 44, 0.85);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+html { scroll-behavior: smooth; }
+
+/* NAVBAR PREMIUM GLASSMORPHISM */
+.navbar {
+  position: fixed; top: 0; width: 100%; z-index: 9999;
+  background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 1.5rem 0; transition: padding 0.3s ease;
+}
+.navbar .container {
+  max-width: 1300px; margin: auto; padding: 0 5%;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.navbar h1 {
+  font-family: 'Cinzel', serif; /* Fonte de grifes de luxo */
+  font-size: 1.8rem; color: var(--gold-premium); font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.navLinks { display: flex; gap: 2.5rem; list-style: none; }
+.navLinks a {
+  color: var(--text-light); text-decoration: none; font-size: 0.95rem;
+  letter-spacing: 1px; font-weight: 400; transition: all 0.3s;
+  text-transform: uppercase; display: flex; align-items: center; gap: 5px;
+}
+.navLinks a:hover { color: var(--gold-premium); text-shadow: 0 0 10px var(--gold-glow); }
+
+/* HERO EDITORIAL PREMIUM (DESIGN ABSURDO) */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  /* Fundo de Pintura Antiga: Textura suave de Stucco sobreposta ao Navy */
+  background: 
+    url('https://www.transparenttextures.com/patterns/stucco.png'),
+    linear-gradient(to bottom, #0B192C, #060D18);
+  background-blend-mode: overlay, normal;
+  padding-top: 100px; padding-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+}
+/* Detalhe Floral Clássico nas Bordas (Rosas Aquareladas) */
+.hero::before {
+  content: ''; position: absolute; top: -50px; left: -50px;
+  width: 500px; height: 500px;
+  background: url('/logo/watercolor-roses.png') center/contain no-repeat;
+  mix-blend-mode: screen; opacity: 0.6; pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(circle, black 40%, transparent 80%); -webkit-mask-image: radial-gradient(circle, black 40%, transparent 80%);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -50px; right: -50px;
+  width: 450px; height: 450px;
+  background: url('/logo/watercolor-roses.png') center/contain no-repeat;
+  mix-blend-mode: screen; opacity: 0.45; pointer-events: none; z-index: 0;
+  transform: rotate(180deg);
+  mask-image: radial-gradient(circle, black 30%, transparent 80%); -webkit-mask-image: radial-gradient(circle, black 30%, transparent 80%);
+}
+.hero-container {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+  width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 5%; gap: 4rem; position: relative; z-index: 1;
+}
+.hero-text-side {
+  flex: 1; min-width: 320px; max-width: 600px; text-align: left;
+  animation: fadeInLeft 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.hero-image-side {
+  flex: 1; min-width: 320px; height: 600px; display: flex; justify-content: flex-end;
+  animation: fadeInRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.hero-image-frame {
+  width: 100%; max-width: 450px; height: 100%;
+  border-radius: 250px 250px 20px 20px; /* Arco de cúpula de igreja / Super Premium */
+  border: 1px solid rgba(212, 175, 55, 0.4); 
+  /* "Efeito Catedral": Múltiplos aros flutuantes via box-shadow criando arquitetura sutil 3D */
+  box-shadow: 
+    0 0 0 10px rgba(11, 25, 44, 0.7), 
+    0 0 0 11px rgba(212, 175, 55, 0.25), 
+    0 0 0 25px rgba(11, 25, 44, 0.5), 
+    0 0 0 26px rgba(212, 175, 55, 0.1), 
+    0 50px 100px rgba(0,0,0,0.8); 
+  position: relative;
+  overflow: hidden; /* Importante para a foto nao vazar o arco */
+  background: radial-gradient(circle at center 20%, rgba(212,175,55,0.15) 0%, transparent 60%);
+}
+.hero-image-frame img {
+  width: 100%; height: 100%; 
+  /* Cover sem zoom, ancorado no Topo para não cortar a coroa */
+  object-fit: cover; 
+  object-position: 75% top; 
+  transform: scale(1);
+  position: relative; z-index: 2; /* Camada acima da luz */
+}
+
+/* O "Tcham": Raios Celestiais Rotativos bem sutis (Resplendor da Santa) nas costas do PNG transparente! */
+.hero-image-frame::before {
+  content: ''; position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent 0%, rgba(212, 175, 55, 0.2) 15%, transparent 30%, transparent 50%, rgba(212, 175, 55, 0.2) 65%, transparent 80%);
+  animation: rotateLight 30s linear infinite;
+  z-index: 1; /* Ensaduichado atrás da Santa */
+  pointer-events: none;
+}
+@keyframes rotateLight { 100% { transform: rotate(360deg); } }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 1rem;
+  font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-premium); margin-bottom: 2rem;
+}
+/* Estrelas Bizantinas / Ortodoxas Livro Russo */
+.hero-badge::before, .hero-badge::after {
+  content: '✦'; 
+  font-size: 1.2rem;
+  color: var(--gold-premium); 
+  opacity: 0.7;
+}
+.hero h2 {
+  font-family: 'Cinzel', serif; font-size: 4.8rem; font-weight: 700;
+  line-height: 1.1; margin-bottom: 1.5rem; text-transform: uppercase;
+  color: white; 
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+.hero h2 span {
+  text-shadow: 0 0 15px var(--gold-imperial-shadow); /* Brilho Joia Imperial Russa */
+}
+.hero p {
+  font-size: 1.25rem; font-weight: 300; margin-bottom: 3rem;
+  font-family: 'Inter', sans-serif; line-height: 1.6; color: #E0E8F5; /* BRANCO SOLIDO COM TOM AZULADO DE LUXO */
+}
+@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+/* BOTÕES DE LUXO */
+.btn-gold {
+  display: inline-block; padding: 1rem 2.5rem; background: var(--gold-premium);
+  color: var(--primary-navy); font-weight: 700; font-size: 1rem;
+  text-transform: uppercase; letter-spacing: 1.5px; border-radius: 4px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.4s ease; box-shadow: 0 10px 30px var(--gold-glow);
+}
+.btn-gold:hover {
+  background: #EED270; transform: translateY(-3px); box-shadow: 0 15px 40px var(--gold-glow);
+}
+
+/* SEÇÕES GENÉRICAS */
+.section { padding: 8rem 5%; max-width: 1400px; margin: auto; }
+.section-title {
+  text-align: center; margin-bottom: 4rem;
+}
+.section-title h3 {
+  font-family: 'Cinzel', serif; font-size: 2.8rem; color: var(--primary-navy); margin-bottom: 1rem;
+}
+.section-title div {
+  width: 80px; height: 3px; background: var(--gold-premium); margin: auto;
+}
+
+/* GRID DE VIAGENS PREMIUM */
+.trips-container {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 3rem;
+}
+.trip-card {
+  position: relative; background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05); transition: transform 0.4s, box-shadow 0.4s;
+  border: 1px solid rgba(0,0,0,0.03); group: true;
+}
+.trip-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+.trip-image-container { position: relative; width: 100%; height: 300px; overflow: hidden; }
+.trip-image-container img {
+  width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease;
+}
+.trip-card:hover .trip-image-container img { transform: scale(1.08); }
+.trip-badge {
+  position: absolute; top: 20px; left: 20px; background: var(--glass-bg); backdrop-filter: blur(10px);
+  color: var(--gold-premium); padding: 0.5rem 1rem; border-radius: 4px; font-weight: 700;
+  font-size: 0.85rem; letter-spacing: 1px;
+}
+.trip-info { padding: 2.5rem; }
+.trip-info h4 { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--primary-navy); margin-bottom: 1rem; }
+.trip-info p { color: var(--text-gray); margin-bottom: 2rem; font-size: 1rem; line-height: 1.6; }
+
+/* GALERIA MASONRY (FOTOS) */
+.gallery-masonry {
+  columns: 3 350px; column-gap: 1.5rem;
+}
+.gallery-item {
+  position: relative; margin-bottom: 1.5rem; break-inside: avoid;
+  border-radius: 12px; overflow: hidden; cursor: pointer;
+}
+.gallery-item img { width: 100%; display: block; transition: transform 0.5s ease; }
+.gallery-overlay {
+  position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent 70%);
+  opacity: 0; display: flex; align-items: flex-end; padding: 2rem; transition: opacity 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-text { color: var(--gold-premium); font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: bold; }
+
+/* CONTATO SUPER LUXUOSO AQUARELADO */
+.contact-section { 
+  background: 
+    url('https://www.transparenttextures.com/patterns/stucco.png'),
+    linear-gradient(to top, #0B192C, #060D18);
+  background-blend-mode: overlay, normal;
+  color: white; padding: 8rem 5%; 
+  position: relative; overflow: hidden;
+}
+
+/* Flores de canto no rodapé */
+.contact-section::before {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 450px; height: 450px;
+  background: url('/logo/watercolor-roses.png') center/contain no-repeat;
+  mix-blend-mode: screen; opacity: 0.35; pointer-events: none; z-index: 0;
+  transform: rotate(90deg);
+  mask-image: radial-gradient(circle, black 30%, transparent 80%); -webkit-mask-image: radial-gradient(circle, black 30%, transparent 80%);
+}
+.contact-section::after {
+  content: ''; position: absolute; top: -50px; right: -50px;
+  width: 350px; height: 350px;
+  background: url('/logo/watercolor-roses.png') center/contain no-repeat;
+  mix-blend-mode: screen; opacity: 0.5; pointer-events: none; z-index: 0;
+  transform: rotate(-90deg);
+  mask-image: radial-gradient(circle, black 40%, transparent 80%); -webkit-mask-image: radial-gradient(circle, black 40%, transparent 80%);
+}
+
+.contact-grid {
+  max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.contact-info h3 { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--gold-premium); margin-bottom: 1.5rem; }
+.contact-info p { font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem; font-family: 'Inter', sans-serif; }
+.contact-link {
+  display: flex; align-items: center; padding: 1.5rem; margin-bottom: 1.5rem;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; text-decoration: none; color: white; font-size: 1.2rem;
+  transition: all 0.3s;
+}
+.contact-link:hover { background: rgba(212,175,55,0.1); border-color: var(--gold-premium); transform: translateX(10px); }
+.contact-link span { color: var(--gold-premium); font-weight: bold; margin-right: 1.5rem; font-size: 1.5rem; }
+
+/* RODAPÉ FOSCO */
+.footer { background: #07111D; color: rgba(255,255,255,0.5); text-align: center; padding: 3rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+
+/* ANIMAÇÕES */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
