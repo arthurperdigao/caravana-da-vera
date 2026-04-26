@@ -1,31 +1,17 @@
-import fs from 'fs';
-import path from 'path';
-import GalleryClient from './GalleryClient';
-
-export default function Gallery() {
-  const sourceDir = path.join(process.cwd(), 'passageirosImg');
-  const publicDir = path.join(process.cwd(), 'public', 'passageirosImg');
+export default async function Gallery() {
+  // Busca a lista de fotos da nossa nova API de nuvem
+  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
+  const host = process.env.VERCEL_URL || 'localhost:3000';
   
-  if (fs.existsSync(sourceDir) && !fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
-  }
-
   let photoFiles = [];
-  
-  // Rotina Autônoma: Lê a pasta raiz passageirosImg, copia pro Public e joga na Galeria
-  if (fs.existsSync(sourceDir)) {
-    const files = fs.readdirSync(sourceDir);
-    files.forEach(file => {
-      if (file.toLowerCase().endsWith('.jpg') || file.toLowerCase().endsWith('.png') || file.toLowerCase().endsWith('.jpeg')) {
-        const destPath = path.join(publicDir, file);
-        if (!fs.existsSync(destPath)) {
-          fs.copyFileSync(path.join(sourceDir, file), destPath);
-        }
-        photoFiles.push(`/passageirosImg/${file}`);
-      }
-    });
+  try {
+    const res = await fetch(`${protocol}://${host}/api/photos`, { cache: 'no-store' });
+    photoFiles = await res.json();
+  } catch (e) {
+    console.error("Erro ao carregar galeria:", e);
   }
 
   // Entrega o array pronto para o Client Component renderizar a interação
   return <GalleryClient photos={photoFiles} />;
 }
+

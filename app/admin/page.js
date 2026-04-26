@@ -75,13 +75,13 @@ export default function AdminPage() {
   }
 
   // Handler Exclizar Foto (Lixeira)
-  async function handleDeletePhoto(filename) {
-    if(!confirm("Atenção: A foto será apagada do servidor fisicamente. Confirmar?")) return;
+  async function handleDeletePhoto(url) {
+    if(!confirm("Atenção: A foto será apagada permanentemente da nuvem. Confirmar?")) return;
     try {
       const res = await fetch('/api/photos', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ filename })
+        body: JSON.stringify({ url })
       });
       if(res.ok) fetchData();
       else alert('Erro ao excluir a foto');
@@ -95,7 +95,7 @@ export default function AdminPage() {
         {/* CABEÇALHO DO PAINEL */}
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
            <h1 style={{ fontFamily: 'Cinzel', color: '#0B192C', fontSize: '3rem', margin: 0 }}>Gestão Ouro</h1>
-           <p style={{ color: '#666', fontSize: '1.2rem', letterSpacing: '4px', textTransform: 'uppercase' }}>Painel da Agência Santa Edwirges</p>
+           <p style={{ color: '#666', fontSize: '1.2rem', letterSpacing: '4px', textTransform: 'uppercase' }}>Painel da Agência Caravana da Vera</p>
         </div>
 
         {/* 1. PUBLICAR NOVA ROMARIA */}
@@ -164,10 +164,10 @@ export default function AdminPage() {
 
           {photos.length === 0 ? <p style={{color:'#666'}}>A galeria está vazia.</p> : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '20px' }}>
-              {photos.map(filename => (
-                <div key={filename} style={{ position: 'relative', height: '180px', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-                  <img src={`/passageirosImg/${filename}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="galeria item" />
-                  <button onClick={() => handleDeletePhoto(filename)} style={{ position: 'absolute', bottom: '10px', right: '10px', background: '#8b0000', color: 'white', border: 'none', borderRadius: '5px', padding: '6px 12px', cursor: 'pointer', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase' }}>
+              {photos.map(url => (
+                <div key={url} style={{ position: 'relative', height: '180px', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
+                  <img src={url} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="galeria item" />
+                  <button onClick={() => handleDeletePhoto(url)} style={{ position: 'absolute', bottom: '10px', right: '10px', background: '#8b0000', color: 'white', border: 'none', borderRadius: '5px', padding: '6px 12px', cursor: 'pointer', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase' }}>
                     Remover
                   </button>
                 </div>
@@ -175,6 +175,7 @@ export default function AdminPage() {
             </div>
           )}
         </div>
+
 
       </div>
     </div>

@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server';
 import { insertTrip, getTrips, deleteTrip } from '@/lib/db';
-import fs from 'fs';
-import path from 'path';
+import { put } from '@vercel/blob';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const trips = getTrips();
+    const trips = await getTrips();
     return NextResponse.json(trips);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -20,29 +19,22 @@ export async function POST(request) {
     const title = formData.get('title');
     const dateInfo = formData.get('dateInfo');
     const included = formData.get('included');
-    
-    // Tratando price nulo (retro-compatibilidade com Front)
     const price = formData.get('price') || '';
     const installments = formData.get('installments') || '';
     const image = formData.get('image');
 
     if (!image || typeof image === 'string') {
-        throw new Error('Seu arquivo de imagem falhou ou não foi enviado.');
+      throw new Error('Seu arquivo de imagem falhou ou não foi enviado.');
     }
     
-    const arrayBuffer = await image.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const safeName = image.name.replace(/\s+/g, '-').toLowerCase();
-    const filename = `${Date.now()}-${safeName}`;
+    // Sobe para o Vercel Blob
+    const blob = await put(`trips/${Date.now()}-${image.name}`, image, {
+      access: 'public',
+    });
     
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
-    if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+    const imageUrl = blob.url;
     
-    const filePath = path.join(uploadsDir, filename);
-    fs.writeFileSync(filePath, buffer);
-    const imageUrl = `/uploads/${filename}`;
-    
-    const newTrip = insertTrip({ title, dateInfo, included, price, installments, imageUrl });
+    const newTrip = await insertTrip({ title, dateInfo, included, price, installments, imageUrl });
     return NextResponse.json({ success: true, trip: newTrip });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -54,9 +46,10 @@ export async function DELETE(request) {
     const { id } = await request.json();
     if (!id) throw new Error('ID é obrigatório');
     
-    deleteTrip(id);
+    await deleteTrip(id);
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
+
