@@ -47,6 +47,9 @@ html { scroll-behavior: smooth; }
 .nav-logo-subtitle {
   font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #E0E8F5; letter-spacing: 6px; text-transform: uppercase; opacity: 0.9;
 }
+.nav-logo-img {
+  width: 55px; height: auto; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5)); transition: 0.3s;
+}
 .navLinks { display: flex; gap: 2.5rem; list-style: none; }
 .navLinks a {
   color: var(--text-light); text-decoration: none; font-size: 0.95rem;
@@ -375,12 +378,13 @@ html { scroll-behavior: smooth; }
   
   .nav-logo-title { font-size: 1.4rem; }
   .nav-logo-subtitle { font-size: 0.6rem; letter-spacing: 4px; }
+  .nav-logo-img { width: 40px; }
   
   .section { padding: 3rem 5%; }
   .section-title h3 { font-size: 1.6rem; }
   .section-title { margin-bottom: 2rem; }
   
-  .trips-container { grid-template-columns: 1fr; gap: 1.5rem; }
+  .trips-container { grid-template-columns: 1fr; gap: 2.5rem; }
   .trip-card { max-width: 100%; margin: 0; }
   .trip-info { padding: 1.5rem; }
   
@@ -393,7 +397,7 @@ html { scroll-behavior: smooth; }
   .lightbox-label { font-size: 1rem; bottom: 20px; letter-spacing: 2px; }
   
   /* Ajustes dos Novos Elementos Extraidos */
-  .benefits-banner { padding: 1.5rem; border-radius: 12px; gap: 1.5rem; margin-bottom: 2rem; }
+  .benefits-banner { padding: 1.5rem; border-radius: 12px; gap: 1.5rem; margin-bottom: 4rem; }
   .benefit-item { flex-direction: column; text-align: center; gap: 10px; }
   .directors-letter { padding: 1rem 5%; }
   .letter-text { font-size: 1.2rem; margin-bottom: 1.5rem; }

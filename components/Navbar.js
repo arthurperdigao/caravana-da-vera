@@ -9,7 +9,8 @@ export default function Navbar() {
   return (
     <nav className="navbar" style={{ padding: '0.5rem 0' }}>
       <div className="container" style={{ alignItems: 'center' }}>
-        <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', gap: '15px' }}>
+          <img src="/logo/LOGO AMARELA SEM FUNDO.png" alt="Logo Santa Edwirges" className="nav-logo-img" />
           <div style={{ display: 'flex', flexDirection: 'column', padding: '10px 0' }}>
              <span className="nav-logo-title">Santa Edwirges</span>
              <span className="nav-logo-subtitle">Agência de Turismo</span>
