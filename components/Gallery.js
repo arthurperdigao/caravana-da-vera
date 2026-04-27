@@ -1,17 +1,20 @@
+import GalleryClient from './GalleryClient';
+
 export default async function Gallery() {
-  // Busca a lista de fotos da nossa nova API de nuvem
-  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
-  const host = process.env.VERCEL_URL || 'localhost:3000';
+  // Na Vercel, o melhor é chamar o Blob diretamente se for Server Component
+  // ou usar uma URL absoluta segura.
+  const host = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
   
   let photoFiles = [];
   try {
-    const res = await fetch(`${protocol}://${host}/api/photos`, { cache: 'no-store' });
-    photoFiles = await res.json();
+    const res = await fetch(`${host}/api/photos`, { cache: 'no-store' });
+    if (res.ok) {
+      photoFiles = await res.json();
+    }
   } catch (e) {
     console.error("Erro ao carregar galeria:", e);
   }
 
-  // Entrega o array pronto para o Client Component renderizar a interação
-  return <GalleryClient photos={photoFiles} />;
+  return <GalleryClient photos={Array.isArray(photoFiles) ? photoFiles : []} />;
 }
 
