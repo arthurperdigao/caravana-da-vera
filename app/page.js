@@ -103,13 +103,13 @@ export default async function Home() {
             <p>Garanta o seu assento! Atendimento humanizado e rápido.</p>
             
             <a href="https://wa.me/5531988861776" target="_blank" className="contact-link">
-              <span>W</span> (31) 98886-1776
+              <span style={{fontSize: '1rem', letterSpacing: '1px'}}>WHATSAPP</span> (31) 98886-1776
             </a>
             <a href="https://instagram.com/caravanadavera" target="_blank" className="contact-link">
-              <span>IG</span> @caravanadavera
+              <span style={{fontSize: '1rem', letterSpacing: '1px'}}>INSTAGRAM</span> @caravanadavera
             </a>
             <a href="mailto:caravavanadavera@gmail.com" className="contact-link">
-              <span>@</span> caravavanadavera@gmail.com
+              <span style={{fontSize: '1rem', letterSpacing: '1px'}}>E-MAIL</span> caravavanadavera@gmail.com
             </a>
           </div>
           <div className="testimonial-card">
