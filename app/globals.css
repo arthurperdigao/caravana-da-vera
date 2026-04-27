@@ -264,5 +264,72 @@ html { scroll-behavior: smooth; }
 /* RODAPÉ FOSCO */
 .footer { background: #07111D; color: rgba(255,255,255,0.5); text-align: center; padding: 3rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
 
-/* ANIMAÇÕES */
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+/* -------------------------------------------------------------------------- */
+/* RESPONSIVIDADE MOBILE (DESIGN PREMIUM ADAPTÁVEL)                          */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 992px) {
+  .hero-container { gap: 2rem; text-align: center; }
+  .hero-text-side { max-width: 100%; order: 2; }
+  .hero-image-side { order: 1; height: 450px; justify-content: center; }
+  .hero h2 { font-size: 3.2rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .navbar .container { padding: 0 5%; }
+  .navLinks {
+    position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+    background: var(--primary-navy); flex-direction: column; 
+    justify-content: center; align-items: center; gap: 3rem;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    z-index: 10000;
+  }
+  .navLinks.active { right: 0; }
+  .navLinks a { font-size: 1.2rem; }
+  
+  .hero h2 { font-size: 2.5rem; }
+  .hero p { font-size: 1.1rem; }
+  .hero-image-frame { max-width: 320px; border-radius: 180px 180px 15px 15px; }
+  
+  .section { padding: 4rem 5%; }
+  .section-title h3 { font-size: 2rem; }
+  
+  .trips-container { grid-template-columns: 1fr; }
+  
+  .gallery-masonry { columns: 2 150px; }
+  
+  .hamburger {
+    display: block !important; cursor: pointer; z-index: 10001;
+  }
+  
+  /* Esconde links normais no mobile ate abrir o menu */
+  .navbar .navLinks:not(.active) {
+    display: flex; /* Mantem flex mas o right -100% esconde */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 { font-size: 2.1rem; }
+  .hero-image-side { height: 350px; }
+  .navbar h1 { font-size: 1.4rem; }
+  .gallery-masonry { columns: 1; }
+  .btn-gold { width: 100%; text-align: center; }
+}
+
+/* Hamburguer Icon */
+.hamburger {
+  display: none; width: 30px; height: 20px; position: relative;
+}
+.hamburger span {
+  display: block; width: 100%; height: 2px; background: var(--gold-premium);
+  position: absolute; transition: 0.3s;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg); bottom: 9px; }
