@@ -367,7 +367,7 @@ html { scroll-behavior: smooth; }
   .navLinks a { font-size: 1.2rem; }
   
   /* HERO LIMPÍSSIMO PARA MOBILE */
-  .hero { padding-top: 100px; padding-bottom: 30px; overflow-x: hidden; background-blend-mode: soft-light, normal; }
+  .hero { padding-top: 100px; padding-bottom: 30px; overflow-x: hidden; background: linear-gradient(to bottom, #0B192C, #060D18); }
   .hero::before { width: 250px; height: 250px; top: -20px; left: -20px; opacity: 0.4; }
   .hero::after { width: 250px; height: 250px; bottom: -20px; right: -20px; opacity: 0.3; }
   .hero-container { gap: 2.5rem; z-index: 2; position: relative; }
@@ -405,7 +405,7 @@ html { scroll-behavior: smooth; }
   .signature { font-size: 1.8rem; }
   
   /* CONTATO COMPACTO E ELEGANTE */
-  .contact-section { padding: 3rem 5%; overflow-x: hidden; background-blend-mode: soft-light, normal; }
+  .contact-section { padding: 3rem 5%; overflow-x: hidden; background: linear-gradient(to top, #0B192C, #060D18); }
   .contact-section::before { width: 200px; height: 200px; bottom: -30px; left: -30px; opacity: 0.25; }
   .contact-section::after { width: 200px; height: 200px; top: -30px; right: -30px; opacity: 0.3; }
   .contact-info { z-index: 2; position: relative; }
