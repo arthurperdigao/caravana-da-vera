@@ -367,14 +367,15 @@ html { scroll-behavior: smooth; }
   .navLinks a { font-size: 1.2rem; }
   
   /* HERO LIMPÍSSIMO PARA MOBILE */
-  .hero { padding-top: 100px; padding-bottom: 30px; overflow-x: hidden; }
+  .hero { padding-top: 100px; padding-bottom: 30px; overflow-x: hidden; background-blend-mode: soft-light, normal; }
   .hero::before { width: 250px; height: 250px; top: -20px; left: -20px; opacity: 0.4; }
   .hero::after { width: 250px; height: 250px; bottom: -20px; right: -20px; opacity: 0.3; }
   .hero-container { gap: 2.5rem; z-index: 2; position: relative; }
   .hero h2 { font-size: 2rem; margin-bottom: 0.8rem; line-height: 1.3; }
   .hero p { font-size: 1.05rem; margin-bottom: 1.5rem; padding: 0 10px; line-height: 1.5; }
   .hero-image-frame { max-width: 250px; border-radius: 130px 130px 10px 10px; z-index: 10; position: relative; }
-  .hero-badge { font-size: 0.75rem; margin-bottom: 1.5rem; margin-top: 1rem; gap: 0.5rem; flex-wrap: wrap; justify-content: center; text-align: center; }
+  .hero-badge { font-size: 0.65rem; margin-bottom: 1.5rem; margin-top: 1rem; gap: 0.3rem; justify-content: center; text-align: center; white-space: nowrap; }
+  .hero-badge::before, .hero-badge::after { font-size: 0.8rem; }
   
   .nav-logo-title { font-size: 1.4rem; }
   .nav-logo-subtitle { font-size: 0.6rem; letter-spacing: 4px; }
@@ -404,7 +405,7 @@ html { scroll-behavior: smooth; }
   .signature { font-size: 1.8rem; }
   
   /* CONTATO COMPACTO E ELEGANTE */
-  .contact-section { padding: 3rem 5%; overflow-x: hidden; }
+  .contact-section { padding: 3rem 5%; overflow-x: hidden; background-blend-mode: soft-light, normal; }
   .contact-section::before { width: 200px; height: 200px; bottom: -30px; left: -30px; opacity: 0.25; }
   .contact-section::after { width: 200px; height: 200px; top: -30px; right: -30px; opacity: 0.3; }
   .contact-info { z-index: 2; position: relative; }
