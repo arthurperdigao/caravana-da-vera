@@ -8,13 +8,35 @@ export default function GalleryClient({ photos }) {
   const closeLightbox = () => setSelectedIndex(null);
   
   const goNext = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     setSelectedIndex((prev) => (prev + 1) % photos.length);
   };
   
   const goPrev = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     setSelectedIndex((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
+  };
+
+  // Lógica de Swipe para Mobile
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEndEvent = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) goNext();
+    if (isRightSwipe) goPrev();
   };
 
   // Trava o scroll da página quando loghtbox está aberto
@@ -57,40 +79,29 @@ export default function GalleryClient({ photos }) {
 
       {/* Lightbox / Tela Cheia Modal */}
       {selectedIndex !== null && (
-        <div style={{
-          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-          backgroundColor: 'rgba(5, 10, 20, 0.95)', /* Tons de Blue Navy Escuro pro overlay */
-          backdropFilter: 'blur(5px)', zIndex: 99999,
-          display: 'flex', justifyContent: 'center', alignItems: 'center'
-        }} onClick={closeLightbox}>
+        <div 
+          className="lightbox-overlay" 
+          onClick={closeLightbox}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEndEvent}
+        >
           
-          <button onClick={closeLightbox} style={{
-            position: 'absolute', top: '20px', right: '30px', background: 'none', border: 'none', 
-            color: '#D4AF37', fontSize: '3rem', cursor: 'pointer', zIndex: 100000, transition: '0.2s'
-          }} onMouseOver={e => e.target.style.color = 'white'} onMouseOut={e => e.target.style.color = '#D4AF37'}>&times;</button>
+          <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
 
-          <button onClick={goPrev} style={{
-            position: 'absolute', left: '20px', background: 'none', border: 'none', 
-            color: 'rgba(255,255,255,0.5)', fontSize: '5rem', cursor: 'pointer', zIndex: 100000, transition: '0.2s'
-          }} onMouseOver={e => e.target.style.color = '#D4AF37'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.5)'}>&#10094;</button>
+          <button className="lightbox-nav lightbox-prev" onClick={goPrev}>&#10094;</button>
 
           <img 
             src={photos[selectedIndex]} 
-            style={{ 
-              maxWidth: '85vw', maxHeight: '85vh', objectFit: 'contain', 
-              borderRadius: '10px', boxShadow: '0 0 50px rgba(0,0,0,0.8), 0 0 20px rgba(212,175,55,0.1)' 
-            }} 
+            className="lightbox-img"
             onClick={(e) => e.stopPropagation()} 
             alt="Expanded view"
           />
 
-          <button onClick={goNext} style={{
-            position: 'absolute', right: '20px', background: 'none', border: 'none', 
-            color: 'rgba(255,255,255,0.5)', fontSize: '5rem', cursor: 'pointer', zIndex: 100000, transition: '0.2s'
-          }} onMouseOver={e => e.target.style.color = '#D4AF37'} onMouseOut={e => e.target.style.color = 'rgba(255,255,255,0.5)'}>&#10095;</button>
+          <button className="lightbox-nav lightbox-next" onClick={goNext}>&#10095;</button>
           
           {/* Etiqueta elegante no rodapé da foto aberta */}
-          <div style={{ position: 'absolute', bottom: '30px', color: '#D4AF37', fontFamily: 'Cinzel, serif', fontSize: '1.5rem', letterSpacing: '4px' }}>
+          <div className="lightbox-label">
              {photos[selectedIndex].includes('principal') ? 'Oração e Fé' : photos[selectedIndex].includes('vera') ? 'Curadoria de Vera' : 'Nossos Incríveis Passageiros'}
           </div>
         </div>

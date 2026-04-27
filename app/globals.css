@@ -41,6 +41,12 @@ html { scroll-behavior: smooth; }
   font-size: 1.8rem; color: var(--gold-premium); font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase;
 }
+.nav-logo-title {
+  font-family: 'Cinzel', serif; font-size: 2rem; color: #D4AF37; font-weight: 700; line-height: 1.1; text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+.nav-logo-subtitle {
+  font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #E0E8F5; letter-spacing: 6px; text-transform: uppercase; opacity: 0.9;
+}
 .navLinks { display: flex; gap: 2.5rem; list-style: none; }
 .navLinks a {
   color: var(--text-light); text-decoration: none; font-size: 0.95rem;
@@ -218,6 +224,34 @@ html { scroll-behavior: smooth; }
 .gallery-item:hover img { transform: scale(1.05); }
 .gallery-text { color: var(--gold-premium); font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: bold; }
 
+/* LIGHTBOX */
+.lightbox-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(5, 10, 20, 0.95); backdrop-filter: blur(5px);
+  z-index: 99999; display: flex; justify-content: center; align-items: center;
+}
+.lightbox-close {
+  position: absolute; top: 20px; right: 30px; background: none; border: none;
+  color: #D4AF37; font-size: 3rem; cursor: pointer; z-index: 100000; transition: 0.2s;
+}
+.lightbox-close:hover { color: white; }
+.lightbox-nav {
+  position: absolute; background: none; border: none; color: rgba(255,255,255,0.5);
+  font-size: 5rem; cursor: pointer; z-index: 100000; transition: 0.2s;
+}
+.lightbox-nav:hover { color: #D4AF37; }
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-img {
+  max-width: 85vw; max-height: 85vh; object-fit: contain; border-radius: 10px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8), 0 0 20px rgba(212,175,55,0.1);
+  user-select: none; /* Previne seleção ao fazer swipe */
+}
+.lightbox-label {
+  position: absolute; bottom: 30px; color: #D4AF37; font-family: 'Cinzel', serif;
+  font-size: 1.5rem; letter-spacing: 4px; text-align: center; width: 100%;
+}
+
 /* CONTATO SUPER LUXUOSO AQUARELADO */
 .contact-section { 
   background: 
@@ -333,11 +367,14 @@ html { scroll-behavior: smooth; }
   .hero { padding-top: 100px; padding-bottom: 30px; overflow-x: hidden; }
   .hero::before { width: 250px; height: 250px; top: -20px; left: -20px; opacity: 0.4; }
   .hero::after { width: 250px; height: 250px; bottom: -20px; right: -20px; opacity: 0.3; }
-  .hero-container { gap: 1.5rem; z-index: 2; position: relative; }
-  .hero h2 { font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
-  .hero p { font-size: 1rem; margin-bottom: 1.5rem; padding: 0; }
+  .hero-container { gap: 2.5rem; z-index: 2; position: relative; }
+  .hero h2 { font-size: 2rem; margin-bottom: 0.8rem; line-height: 1.3; }
+  .hero p { font-size: 1.05rem; margin-bottom: 1.5rem; padding: 0 10px; line-height: 1.5; }
   .hero-image-frame { max-width: 250px; border-radius: 130px 130px 10px 10px; z-index: 10; position: relative; }
-  .hero-badge { font-size: 0.7rem; margin-bottom: 1rem; }
+  .hero-badge { font-size: 0.75rem; margin-bottom: 1.5rem; margin-top: 1rem; gap: 0.5rem; flex-wrap: wrap; justify-content: center; text-align: center; }
+  
+  .nav-logo-title { font-size: 1.4rem; }
+  .nav-logo-subtitle { font-size: 0.6rem; letter-spacing: 4px; }
   
   .section { padding: 3rem 5%; }
   .section-title h3 { font-size: 1.6rem; }
@@ -348,6 +385,12 @@ html { scroll-behavior: smooth; }
   .trip-info { padding: 1.5rem; }
   
   .gallery-masonry { columns: 2 150px; gap: 1rem; }
+  
+  /* LIGHTBOX MOBILE */
+  .lightbox-img { max-width: 95vw; max-height: 80vh; }
+  .lightbox-close { top: 10px; right: 20px; font-size: 2.5rem; }
+  .lightbox-nav { display: none; /* Esconde setas para focar no swipe limpo */ }
+  .lightbox-label { font-size: 1rem; bottom: 20px; letter-spacing: 2px; }
   
   /* Ajustes dos Novos Elementos Extraidos */
   .benefits-banner { padding: 1.5rem; border-radius: 12px; gap: 1.5rem; margin-bottom: 2rem; }

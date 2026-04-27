@@ -11,8 +11,8 @@ export default function Navbar() {
       <div className="container" style={{ alignItems: 'center' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', padding: '10px 0' }}>
-             <span style={{ fontFamily: 'Cinzel, serif', fontSize: '2rem', color: '#D4AF37', fontWeight: '700', lineHeight: 1.1, textShadow: '0 4px 10px rgba(0,0,0,0.5)' }}>Santa Edwirges</span>
-             <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: '#E0E8F5', letterSpacing: '6px', textTransform: 'uppercase', opacity: 0.9 }}>Agência de Turismo</span>
+             <span className="nav-logo-title">Santa Edwirges</span>
+             <span className="nav-logo-subtitle">Agência de Turismo</span>
           </div>
         </a>
 
