@@ -16,7 +16,7 @@ export default async function Home() {
           <div className="hero-text-side">
             <span className="hero-badge">Agência Santa Edwirges • 28 Anos</span>
             <h2>A Jornada <span style={{color: '#D4AF37'}}>Religiosa</span> da Sua Vida</h2>
-            <p>Experiências transformadoras guiadas pela fé, proporcionando segurança absoluta e extremo conforto em ônibus executivos de luxo para a sua família.</p>
+            <p>Experiências transformadoras guiadas pela fé, proporcionando segurança absoluta e extremo conforto em ônibus extremamente confortáveis para a sua família.</p>
             <a href="#proximas" className="btn-gold" style={{marginTop: '1rem'}}>Explorar Nossos Destinos</a>
           </div>
           <div className="hero-image-side">
