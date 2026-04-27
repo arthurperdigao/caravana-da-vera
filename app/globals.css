@@ -264,14 +264,54 @@ html { scroll-behavior: smooth; }
 /* RODAPÉ FOSCO */
 .footer { background: #07111D; color: rgba(255,255,255,0.5); text-align: center; padding: 3rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
 
+/* BENEFÍCIOS BANNER */
+.benefits-banner {
+  display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 0 auto 4rem;
+  background: rgba(212, 175, 55, 0.08); padding: 2.5rem 3rem; border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.4); max-width: 1000px; box-shadow: 0 10px 30px rgba(212,175,55,0.05);
+}
+.benefit-item {
+  flex: 1; min-width: 280px; display: flex; align-items: center; gap: 20px;
+}
+.benefit-icon {
+  font-size: 2.5rem; background: #fff; padding: 15px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; width: 80px; height: 80px;
+}
+.benefit-item strong { display: block; color: var(--primary-navy); font-size: 1.15rem; margin-bottom: 5px; }
+.benefit-item span { color: #444; font-size: 1rem; line-height: 1.4; }
+
+/* CARTA DA DIRETORIA */
+.directors-letter {
+  max-width: 800px; margin: auto; text-align: center; padding: 4rem 5%;
+}
+.quote-mark {
+  font-size: 4rem; color: var(--gold-premium); font-family: 'Cinzel', serif; line-height: 0; opacity: 0.3; display: block; margin-bottom: 20px;
+}
+.letter-text {
+  font-family: 'Cinzel', serif; font-size: 1.9rem; color: var(--primary-navy); line-height: 1.6; margin: 0 0 3rem 0; font-style: italic;
+}
+.signature {
+  font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--gold-premium); margin: 0;
+}
+.role {
+  font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #999; text-transform: uppercase; letter-spacing: 3px; margin-top: 1rem; font-weight: 600;
+}
+
+/* TESTIMONIAL CARD */
+.testimonial-card {
+  background: rgba(255,255,255,0.05); padding: 4rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);
+}
+.testimonial-card h4 { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold-premium); margin-bottom: 2rem; }
+.testimonial-text { font-style: italic; font-size: 1.1rem; color: white; opacity: 0.8; margin-bottom: 1.5rem; line-height: 1.6; }
+.testimonial-author { font-weight: bold; color: var(--gold-premium); }
+
 /* -------------------------------------------------------------------------- */
 /* RESPONSIVIDADE MOBILE (DESIGN PREMIUM ADAPTÁVEL)                          */
 /* -------------------------------------------------------------------------- */
 
 @media (max-width: 992px) {
-  .hero-container { gap: 2rem; text-align: center; }
-  .hero-text-side { max-width: 100%; order: 2; }
-  .hero-image-side { order: 1; height: 450px; justify-content: center; }
+  .hero-container { gap: 2rem; text-align: center; flex-direction: column; }
+  .hero-text-side { max-width: 100%; order: 2; align-items: center; display: flex; flex-direction: column; }
+  .hero-image-side { order: 1; height: 450px; justify-content: center; width: 100%; }
   .hero h2 { font-size: 3.2rem; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
 }
@@ -289,16 +329,29 @@ html { scroll-behavior: smooth; }
   .navLinks.active { right: 0; }
   .navLinks a { font-size: 1.2rem; }
   
-  .hero h2 { font-size: 2.5rem; }
-  .hero p { font-size: 1.1rem; }
-  .hero-image-frame { max-width: 320px; border-radius: 180px 180px 15px 15px; }
+  .hero { padding-top: 120px; }
+  .hero h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+  .hero p { font-size: 1.05rem; margin-bottom: 2rem; padding: 0 10px; }
+  .hero-image-frame { max-width: 280px; border-radius: 150px 150px 15px 15px; }
   
   .section { padding: 4rem 5%; }
   .section-title h3 { font-size: 2rem; }
+  .section-title { margin-bottom: 2.5rem; }
   
-  .trips-container { grid-template-columns: 1fr; }
+  .trips-container { grid-template-columns: 1fr; gap: 2rem; }
+  .trip-card { max-width: 400px; margin: auto; }
   
   .gallery-masonry { columns: 2 150px; }
+  
+  /* Ajustes dos Novos Elementos Extraidos */
+  .benefits-banner { padding: 1.5rem; border-radius: 12px; gap: 1.5rem; }
+  .benefit-item { flex-direction: column; text-align: center; gap: 10px; }
+  .directors-letter { padding: 2rem 5%; }
+  .letter-text { font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .signature { font-size: 2.2rem; }
+  .contact-section { padding: 4rem 5%; }
+  .testimonial-card { padding: 2rem; }
+  .contact-info h3 { font-size: 2.2rem; }
   
   .hamburger {
     display: block !important; cursor: pointer; z-index: 10001;
