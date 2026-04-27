@@ -329,29 +329,45 @@ html { scroll-behavior: smooth; }
   .navLinks.active { right: 0; }
   .navLinks a { font-size: 1.2rem; }
   
-  .hero { padding-top: 120px; }
-  .hero h2 { font-size: 2.2rem; margin-bottom: 1rem; }
-  .hero p { font-size: 1.05rem; margin-bottom: 2rem; padding: 0 10px; }
-  .hero-image-frame { max-width: 280px; border-radius: 150px 150px 15px 15px; }
+  /* HERO LIMPÍSSIMO PARA MOBILE */
+  .hero { padding-top: 100px; padding-bottom: 30px; overflow-x: hidden; }
+  .hero::before { width: 250px; height: 250px; top: -20px; left: -20px; opacity: 0.4; }
+  .hero::after { width: 250px; height: 250px; bottom: -20px; right: -20px; opacity: 0.3; }
+  .hero-container { gap: 1.5rem; z-index: 2; position: relative; }
+  .hero h2 { font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.2; }
+  .hero p { font-size: 1rem; margin-bottom: 1.5rem; padding: 0; }
+  .hero-image-frame { max-width: 250px; border-radius: 130px 130px 10px 10px; z-index: 10; position: relative; }
+  .hero-badge { font-size: 0.7rem; margin-bottom: 1rem; }
   
-  .section { padding: 4rem 5%; }
-  .section-title h3 { font-size: 2rem; }
-  .section-title { margin-bottom: 2.5rem; }
+  .section { padding: 3rem 5%; }
+  .section-title h3 { font-size: 1.6rem; }
+  .section-title { margin-bottom: 2rem; }
   
-  .trips-container { grid-template-columns: 1fr; gap: 2rem; }
-  .trip-card { max-width: 400px; margin: auto; }
+  .trips-container { grid-template-columns: 1fr; gap: 1.5rem; }
+  .trip-card { max-width: 100%; margin: 0; }
+  .trip-info { padding: 1.5rem; }
   
-  .gallery-masonry { columns: 2 150px; }
+  .gallery-masonry { columns: 2 150px; gap: 1rem; }
   
   /* Ajustes dos Novos Elementos Extraidos */
-  .benefits-banner { padding: 1.5rem; border-radius: 12px; gap: 1.5rem; }
+  .benefits-banner { padding: 1.5rem; border-radius: 12px; gap: 1.5rem; margin-bottom: 2rem; }
   .benefit-item { flex-direction: column; text-align: center; gap: 10px; }
-  .directors-letter { padding: 2rem 5%; }
-  .letter-text { font-size: 1.3rem; margin-bottom: 1.5rem; }
-  .signature { font-size: 2.2rem; }
-  .contact-section { padding: 4rem 5%; }
-  .testimonial-card { padding: 2rem; }
-  .contact-info h3 { font-size: 2.2rem; }
+  .directors-letter { padding: 1rem 5%; }
+  .letter-text { font-size: 1.2rem; margin-bottom: 1.5rem; }
+  .signature { font-size: 1.8rem; }
+  
+  /* CONTATO COMPACTO E ELEGANTE */
+  .contact-section { padding: 3rem 5%; overflow-x: hidden; }
+  .contact-section::before { width: 200px; height: 200px; bottom: -30px; left: -30px; opacity: 0.25; }
+  .contact-section::after { width: 200px; height: 200px; top: -30px; right: -30px; opacity: 0.3; }
+  .contact-info { z-index: 2; position: relative; }
+  .contact-info h3 { font-size: 1.8rem; }
+  .contact-info p { font-size: 1rem; margin-bottom: 2rem; }
+  .contact-link { padding: 1rem; font-size: 1rem; justify-content: center; text-align: center; }
+  .contact-link span { font-size: 0.85rem !important; margin-right: 0.5rem; }
+  
+  .testimonial-card { padding: 1.5rem; }
+  .testimonial-card h4 { font-size: 1.4rem; margin-bottom: 1rem; }
   
   .hamburger {
     display: block !important; cursor: pointer; z-index: 10001;
