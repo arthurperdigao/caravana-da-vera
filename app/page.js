@@ -134,4 +134,4 @@ export default async function Home() {
   );
 }
 
-// Comentário para forçar o rebuild da Vercel e puxar o novo BLOB_READ_WRITE_TOKEN Público
+// Comentário final para forçar o build da Vercel a puxar o redis-cyan-kite
