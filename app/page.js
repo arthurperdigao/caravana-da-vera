@@ -133,3 +133,5 @@ export default async function Home() {
     </main>
   );
 }
+
+// Comentário para forçar o rebuild da Vercel e puxar o novo BLOB_READ_WRITE_TOKEN Público
